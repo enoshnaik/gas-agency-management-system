@@ -1,0 +1,208 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CustomerDashboard</title>
+
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/user.css">
+    <link rel="shortcut icon" href="fev.ico" type="image/x-icon">
+    <style>
+        label {
+            font-size: medium;
+            padding-top: 5px
+        }
+        
+        textarea {
+            resize: none;
+        }
+        
+        .form-control-static {
+            font-size: medium;
+        }
+    </style>
+
+    <style>
+        .row .glyphicon {
+            font-size: 50px;
+        }
+        
+        .square-service-block {
+            position: relative;
+            overflow: hidden;
+            margin: 15px auto;
+            padding: 10px;
+        }
+        
+        .square-service-block a {
+            border-radius: 5px;
+            display: block;
+            padding: 30px 10px;
+            text-align: center;
+            width: 100%;
+        }
+        
+        .square-service-block a:hover b {
+            text-decoration: underline;
+        }
+        
+        table {
+            font-size: medium;
+        }
+        
+        thead tr {
+            background: #009688;
+            color: white;
+        }
+    </style>
+
+    <style>
+        .foot {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            padding: 10px;
+            color: white;
+            text-align: center;
+            font-size: 14px;
+            background-color: #333333;
+            font-weight: normal;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header"><a class="navbar-brand navbar-link" href="/consumerdashboard<%=cus_id%>">Consumer</a>
+                <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+            </div>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav">
+                    <li id=1 role="presentation"><a href="/bookorder<%=cus_id%>">Book Order</a></li>
+                    <li id=2 role="presentation"><a href="/trackrefill<%=cus_id%>">Track your refill</a></li>
+                    <li id=3 role="presentation"><a href="/orderhistory<%=cus_id%>">Order History</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#"><i class="glyphicon glyphicon-user"></i><i> </i><%=name%> <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li role="presentation"><a href="/profileupdate<%=cus_id%>"><span class="glyphicon glyphicon-folder-open"></span> Profile</a></li>
+                            <li role="presentation">
+                                <a href="/logout"> <span class="glyphicon glyphicon-log-out"></span> Log out</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container">
+        <br>
+        <div class="panel panel-default">
+            <div class="panel-body">
+
+                <div class="row">
+
+                    <div class="col-sm-6">
+
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th colspan=2 class="text-center">Consumer Details</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th>Consumer ID :</th>
+                                        <td>
+                                            <%=cus_id%>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Consumer Name :</th>
+                                        <td>
+                                            <%=name%>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Registered Address :</th>
+                                        <td>
+                                            <%=addr%>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Registered Mobile No :</th>
+                                        <td>
+                                            <%=mobile%>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Registered Email :</th>
+                                        <td>
+                                            <%=email%>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+
+
+                        </div>
+
+                    </div>
+                    <div class="col-sm-6">
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="square-service-block">
+                                    <a href="/profileupdate<%=cus_id%>" class="btn btn-info btn-lg">
+                                        <span class="glyphicon glyphicon-user"></span>
+                                        <br><b>Profile<b>
+								</a>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="square-service-block">
+								<a href="/bookorder<%=cus_id%>" class="btn btn-success btn-lg">
+								<span class="glyphicon glyphicon-shopping-cart"></span> 
+								<br><b>Book Order<b>
+								</a>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="square-service-block">
+								<a href="/trackrefill<%=cus_id%>" class="btn btn-primary btn-lg">
+								<span class="glyphicon glyphicon-hourglass"></span> 
+								<br><b>Track Order<b>
+								</a>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="square-service-block">
+								<a href="/orderhistory<%=cus_id%>" class="btn btn-warning btn-lg">
+								<span class="glyphicon glyphicon-copy"></span> 
+								<br><b>Order History<b>
+								</a>
+							</div>
+						</div>				
+					</div>
+									
+				</div>
+
+			</div>
+		</div>
+	</div>
+	
+	
+<footer class="site-footer foot">Copyright &copy;2020</footer>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+	
+</body>
+
+</html>

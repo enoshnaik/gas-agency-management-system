@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>SignUp Form</title>
+    <link href="assets/css/signup.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="#" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/user.css">
+    <link rel="shortcut icon" href="fev.ico" type="image/x-icon">
+
+    <script type="application/x-javascript">
+        addEventListener("load", function() {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header"><a href="/" class="navbar-brand navbar-link"><i class="glyphicon glyphicon-fire text-info"></i>Gas Booking Portal</a>
+                <button data-toggle="collapse" data-target="#navcol-1" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+            </div>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li role="presentation" class="active"><a href="/"><i class="fa fa-home"></i> Home </a></li>
+                    <li role="presentation"><a href="/signup"><i class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#signModal"></i> Sign Up</a></li>
+                    <li role="presentation"><a href="/userlogin"><i class="glyphicon glyphicon-user" data-toggle="modal" data-target="#loginModal"></i>Customer_Log-In</a></li>
+                    <li role="presentation"><a href="/adminlogin"><i class="glyphicon glyphicon-user" data-toggle="modal" data-target="#loginModal"></i>Admin_Log-In</a></li>
+
+            </div>
+            </ul>
+        </div>
+    </nav>
+
+
+    <body>
+        <!-- main -->
+        <div class="main-w3layouts wrapper">
+            <h1>SignUp Form
+            </h1>
+            <div class="main-agileinfo">
+                <div class="agileits-top">
+                    <form action="/signup" name="consignup" class="bootstrap-form-with-validation" onSubmit="return validatePassword();" method="post">
+
+                        <div class="form-group">
+                            <input class="text" type="text" name="conid" value="<%=temp_cid%>" id="conid" disabled><br>
+                            <i><strong>Note:This id should be used for login</strong></i>
+                        </div>
+                        <div>
+                            <input type="hidden" name="cusid" id="cusid" value="<%=temp_cid%>">
+                        </div>
+                        <div class="form-group">
+                            <input class="text" type="text" name="fname" placeholder="First-Name" pattern="[a-zA-Z ]{4,20}" id="fname" required=""><br>
+                        </div>
+                        <div class="form-group">
+                            <input class="text" type="text" name="lname" placeholder="Last-Name" pattern="[a-zA-Z ]{2,10}" id="lname" required=""><br>
+                        </div>
+                        <div class="form-group">
+                            <input class="text" type="text" name="address" placeholder="Address" pattern=".{5,30}" id="address" required=""><br>
+                        </div>
+                        <div class="form-group">
+                            <input class="text" type="text" name="pincode" placeholder="Pincode" pattern="[0-9]{6}" title="Exact Six Digits" maxlength=6 required=""><br>
+                        </div>
+                        <div class="form-group">
+                            <input class="text" type="text" name="mobile" placeholder="Mobile_no" id="cmno" pattern="[1-9]{1}[0-9]{9}" title="Exact Ten Digits" maxlength=10 required=""><br>
+                        </div>
+
+                        <div class="form-group">
+                            <input class="text" type="email" name="email" placeholder="E-Mail" id="email" title="Enter Vaild Email" required=""><br>
+                        </div>
+
+                        <div class="form-group">
+                            <input class="text" type="password" name="password" placeholder="Password" id="password" pattern=".{6,20}" title="Six or more characters" required maxlength=20 required="">
+                        </div>
+
+                        <div class="form-group">
+                            <input class="text w3lpass" type="password" name="cpassword" placeholder="Confirm Password" id="cpass" title="Same as Password" required maxlength=16 required="">
+                        </div>
+                        <script>
+                            var password = document.getElementById("password"),
+                                confirm_password = document.getElementById("cpass");
+
+                            function validatePassword() {
+                                if (confirm_password.value != '')
+                                    if (password.value != confirm_password.value) {
+                                        alert("Passwords Don't Match");
+                                        return false;
+                                    } else {
+                                        confirm_password.setCustomValidity('');
+                                        return true;
+                                    }
+
+                            }
+
+                            password.onblur = validatePassword;
+                            confirm_password.onblur = validatePassword;
+                        </script>
+
+                        <div class="wthree-text">
+                            <label class="anim">
+							<input type="checkbox" class="checkbox" required="">
+							<span>I Agree To The Terms & Conditions</span>
+						</label>
+                            <div class="clear"> </div>
+                        </div>
+
+                        <div class="form-group">
+                            <button class="btn btn-primary btn-block" type="submit" name="ncon_sub">SignUp</button>
+                            <br>
+                            <p id='msg' class="text-danger"></p>
+                        </div>
+                    </form>
+
+
+
+                    <p>Already have an Account? <a href="/userlogin"> Login Now!</a></p>
+                </div>
+            </div>
+            <ul class="colorlib-bubbles">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <!-- //main -->
+
+
+
+        <footer class="site-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h5>Copyright © 2020</h5>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+
+
+    </body>
+
+</html>

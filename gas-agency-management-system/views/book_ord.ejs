@@ -1,0 +1,185 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Order</title>
+
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/user.css">
+    <link rel="shortcut icon" href="fev.ico" type="image/x-icon">
+    <style>
+        label {
+            font-size: medium;
+            padding-top: 5px
+        }
+        
+        textarea {
+            resize: none;
+        }
+        
+        .form-control-static {
+            font-size: medium;
+        }
+    </style>
+
+    <style>
+        .row .glyphicon {
+            font-size: 50px;
+        }
+        
+        .square-service-block {
+            position: relative;
+            overflow: hidden;
+            margin: 15px auto;
+            padding: 10px;
+        }
+        
+        .square-service-block a {
+            border-radius: 5px;
+            display: block;
+            padding: 30px 10px;
+            text-align: center;
+            width: 100%;
+        }
+        
+        .square-service-block a:hover b {
+            text-decoration: underline;
+        }
+        
+        table {
+            font-size: medium;
+        }
+        
+        thead tr {
+            background: #009688;
+            color: white;
+        }
+    </style>
+
+    <style>
+        .foot {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            padding: 10px;
+            color: white;
+            text-align: center;
+            font-size: 14px;
+            background-color: #333333;
+            font-weight: normal;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header"><a class="navbar-brand navbar-link" href="/consumerdashboard<%=cid%>">Consumer</a>
+                <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+            </div>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav">
+                    <li id=1 role="presentation"><a href="/bookorder<%=cid%>">Book Order</a></li>
+                    <li id=2 role="presentation"><a href="/trackrefill<%=cid%>">Track your refill</a></li>
+                    <li id=3 role="presentation"><a href="/orderhistory<%=cid%>">Order History</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#"><i class="glyphicon glyphicon-user"></i><i> </i><%=name%><span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li role="presentation"><a href="/profileupdate<%=cid%>"><span class="glyphicon glyphicon-folder-open"></span> Profile</a></li>
+                            <li role="presentation">
+                                <a href="/logout"> <span class="glyphicon glyphicon-log-out"></span> Log out</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <br>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <%if(message == "success"){%>
+                    <div class="alert alert-success" role="alert" style="width: 60%;">
+                        Your Order has been placed Successfully
+                    </div>
+                    <%}%>
+                        <%if(message == "fail"){%>
+                            <div class="alert alert-danger" role="alert" style="width:60%;">
+                                Your Order cannot be placed, the limit has been exceeded.
+                            </div>
+                            <%}%>
+                                <form action="/bookorder<%=cid%>" method="post">
+
+                                    <div class="form-group">
+                                        <label><b>Terms & Conditions *</b></label>
+                                        <div style="border: 1px solid #e5e5e5; height: 300px; overflow: auto; padding: 10px;">
+                                            <p><i class="glyphicon glyphicon-chevron-right"></i> Price of the Gas Cylinder depends on the day it gets billed.</p>
+                                            <p><i class="glyphicon glyphicon-chevron-right"></i> Order cannot be canceled once you place order.</p>
+                                            <p><i class="glyphicon glyphicon-chevron-right"></i> Prices may be change as per government rules.</p>
+                                            <p><i class="glyphicon glyphicon-chevron-right"></i> You cannot place order for more than one gas cylinder.</p>
+                                            <p><i class="glyphicon glyphicon-chevron-right"></i> Once your order will deliver then and then you can place order for another refill.</p>
+                                            <p><i class="glyphicon glyphicon-chevron-right"></i> Order will be delivered to registered address.</p>
+                                            <p><i class="glyphicon glyphicon-chevron-right"></i> Order status update will be drop via Email</p>
+                                            <p><i class="glyphicon glyphicon-chevron-right"></i> Order will be delivered with week, If not then you can write complain to us.</p>
+                                            <p><i class="glyphicon glyphicon-chevron-right"></i> Product delivery is strictly on first come first served basis.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="checkbox">
+                                            <label>
+								<input id="co_cb" onChange="return chk(this);" type="checkbox" name="agree" value="agree"/> Agree with the terms and conditions
+							</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <button type="submit" id="submit" class="btn btn-warning" disabled>Confirm Order</button>
+
+                                        <!--Loading bar-->
+                                        <div id="preload">
+                                            <img src="assets/process.gif" width=35% style="margin-top:40px;filter: invert(100%) brightness(130%);">
+                                        </div>
+                                        <style>
+                                            #preload {
+                                                display: none;
+                                                width: 100%;
+                                                height: 100%;
+                                                top: 0;
+                                                left: 0;
+                                                position: fixed;
+                                                text-align: center;
+                                                background: rgba(0, 0, 0, 0.5);
+                                            }
+                                        </style>
+
+                                    </div>
+
+                                </form>
+                                <p id="oc_msg" class="text-danger"></p>
+                                <script>
+                                    function chk(co_cb) {
+                                        if (co_cb.checked == false) {
+                                            document.getElementById("submit").disabled = true;
+                                        } else if (co_cb.checked == true) {
+                                            document.getElementById("submit").disabled = false;
+                                        }
+                                        return false;
+                                    }
+                                </script>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer foot">Copyright &copy;2020</footer>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

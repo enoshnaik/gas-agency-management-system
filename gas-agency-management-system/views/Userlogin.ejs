@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Userlogin Form</title>
+    <link href="assets/css/signup.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="#" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/user.css">
+    <link rel="shortcut icon" href="fev.ico" type="image/x-icon">
+
+    <script type="application/x-javascript">
+        addEventListener("load", function() {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header"><a href="/" class="navbar-brand navbar-link"><i class="glyphicon glyphicon-fire text-info"></i>Gas Booking Portal</a>
+                <button data-toggle="collapse" data-target="#navcol-1" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+            </div>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li role="presentation" class="active"><a href="/"><i class="fa fa-home"></i> Home </a></li>
+                    <li role="presentation"><a href="/signup"><i class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#signModal"></i> Sign Up</a></li>
+                    <li role="presentation"><a href="/adminlogin"><i class="glyphicon glyphicon-user" data-toggle="modal" data-target="#loginModal"></i> AdminLog-In</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- main -->
+    <div class="main-w3layouts wrapper">
+        <%if(fail != ""){ %>
+            <div class="alert alert-danger" role="alert" style="width: 50%;position: relative;left: 25%;">
+                UserID or Password is Incorrect Please try Again
+            </div>
+            <%}%>
+                <h1>Userlogin Form</h1>
+                <div class="main-agileinfo">
+                    <div class="agileits-top">
+                        <form action="/userlogin" method="post">
+
+                            <div class="form-group">
+                                <input class="text" type="text" name="userid" id="Lconid" min=1 max=999999 placeholder="User-Id" required=""><br>
+                            </div>
+                            <div class="form-group">
+                                <input class="text" type="password" name="password" id="Lcpass" pattern=".{6,}" title="Six or more characters" required maxlength=16 placeholder="Password" required=""><br>
+                            </div>
+                            <div class="wthree-text">
+                                <div class="clear"> </div>
+                            </div>
+                            <input type="submit" value="Log-In" id=>
+                            <p class="text-danger" id='clmsg'></p>
+                        </form>
+
+                        <p>Don't you have an Account? <a href="/signup"> Register Now!</a></p>
+                    </div>
+                </div>
+                <ul class="colorlib-bubbles">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+    </div>
+    <!-- //main -->
+
+
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h5>Copyright © 2020</h5>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+
+
+</body>
+
+</html>

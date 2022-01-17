@@ -1,0 +1,191 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gas Booking Portal</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/user.css">
+    <link rel="shortcut icon" href="fev.ico" type="image/x-icon">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <style>
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            margin: 0;
+        }
+        
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+        
+        #box .row {
+            margin-top: 20px;
+        }
+        
+        textarea {
+            resize: none;
+        }
+    </style>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header"><a href="/" class="navbar-brand navbar-link"><i class="glyphicon glyphicon-fire text-info"></i>Gas Booking Portal</a>
+                <button data-toggle="collapse" data-target="#navcol-1" class="navbar-toggle collapsed">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			</button>
+            </div>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li role="presentation" class="active"><a href="/"><i class="fa fa-home"></i> Home </a></li>
+                    <li role="presentation"><a href="/signup"><i class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#signModal"></i> Sign Up </a></li>
+                    <li role="presentation"><a href="/userlogin"><i class="glyphicon glyphicon-user" data-toggle="modal" data-target="#loginModal"></i>Customer_Log-In</a></li>
+                    <li role="presentation"><a href="/adminlogin"><i class="glyphicon glyphicon-user" data-toggle="modal" data-target="#loginModal"></i>Admin_Log-In</a></li>
+            </div>
+            </ul>
+        </div>
+        </div>
+    </nav>
+
+    <div class="jumbotron hero">
+        <div class="carousel slide" data-ride="carousel" id="carousel-1">
+            <div class="carousel-inner" role="listbox">
+                <div class="item active"><img style=" margin: 0 auto;" src="assets/img/3.jpg" alt="First Image"></div>
+                <div class="item"><img style=" margin: 0 auto;" src="assets/img/2.jpg" alt="Second Image"></div>
+            </div>
+            <div><a class="left carousel-control" href="#carousel-1" role="button" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i><span class="sr-only">Previous</span></a><a class="right carousel-control" href="#carousel-1" role="button"
+                    data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i><span class="sr-only">Next</span></a></div>
+
+        </div>
+    </div>
+
+
+    <section class="testimonials">
+        <h2 class="text-center">Safety Tips For LPG Home - Do’s & Don’ts</h2>
+        <div class="container ">
+            <div class="row" id='box'>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-12" style="text-align:center">
+                            <u><h3><span class="glyphicon glyphicon-ok text-success"></span> DO'S</h3></u>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <img class="bg-success" style="padding:10px; width:60px;height:60px" src="assets/img/tips/a1.png" />
+                        </div>
+                        <div class="col-md-9">
+                            <h4>Use LPG in Ventilated Area</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <img class="bg-success" style="padding:10px; width:60px;height:60px" src="assets/img/tips/a2.png" />
+                        </div>
+                        <div class="col-md-9">
+                            <h4>Before connecting, check for LPG leakage</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <img class="bg-success" style="padding:10px; width:60px;height:60px" src="assets/img/tips/a3.png" />
+                        </div>
+                        <div class="col-md-9">
+                            <h4>Close the regulator knob once you finish cooking</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <img class="bg-success" style="padding:10px; width:60px;height:60px" src="assets/img/tips/a4.png" />
+                        </div>
+                        <div class="col-md-9">
+                            <h4>Always keep the cylinder vertical, upright during usage and storage</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <img class="bg-success" style="padding:10px; width:60px;height:60px" src="assets/img/tips/a5.png" />
+                        </div>
+                        <div class="col-md-9">
+                            <h4>Always install LPG pipeline above ground level</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-12" style="text-align:center">
+                            <u><h3><span class="glyphicon glyphicon-remove text-danger"></span> DON'T</h3></u>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <img class="bg-danger" style="padding:10px; width:60px;height:60px" src="assets/img/tips/b1.png" />
+                        </div>
+                        <div class="col-md-9">
+                            <h4>Don’t place cylinders in closed areas.</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <img class="bg-danger" style="padding:10px; width:60px;height:60px" src="assets/img/tips/b2.png" />
+                        </div>
+                        <div class="col-md-9">
+                            <h4>Do not use any flammable objects near or over the burner</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <img class="bg-danger" style="padding:10px; width:60px;height:60px" src="assets/img/tips/b3.png" />
+                        </div>
+                        <div class="col-md-9">
+                            <h4>Do not switch on or off any lights or electrical equipment, smoke or use naked flames incase of leakage</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <img class="bg-danger" style="padding:10px; width:60px;height:60px" src="assets/img/tips/b4.png" />
+                        </div>
+                        <div class="col-md-9">
+                            <h4>Do not roll the cylinder</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <img class="bg-danger" style="padding:10px; width:60px;height:60px" src="assets/img/tips/b5.png" />
+                        </div>
+                        <div class="col-md-9">
+                            <h4>Never store LPG in basement, cellar, elevated platforms</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h5>Copyright © 2020</h5>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>

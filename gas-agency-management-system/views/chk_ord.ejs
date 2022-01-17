@@ -1,0 +1,257 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Orders</title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.0/js/mdb.min.js"></script>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/user.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.0/js/mdb.min.js"></script>
+    <link rel="shortcut icon" href="fev.ico" type="image/x-icon">
+    <style>
+        .col-form-label {
+            font-size: medium;
+            padding-top: 5px;
+        }
+        
+        textarea {
+            resize: none;
+        }
+        
+        .form-control-static {
+            font-size: medium;
+        }
+        
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            margin: 0;
+        }
+        
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+    </style>
+
+    <style>
+        .b {
+            padding: 10px;
+            padding-top: 20px;
+            margin: 5px;
+            color: white;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+            transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+        }
+        
+        .b:hover {
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+        }
+        
+        .row .glyphicon {
+            font-size: 60px;
+            padding: 10px;
+        }
+    </style>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header"><a class="navbar-brand navbar-link" href="/admindashboard">Admin</a>
+                <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+            </div>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav">
+                    <li id=1 role="presentation"><a href="/managecustomers">Manage Consumers</a></li>
+                    <li id=2 role="presentation"><a href="/manageorders">Check Orders</a></li>
+                    <li id=3 role="presentation"><a href="/update">Update Price  &amp; Stock</a></li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#"><i class="glyphicon glyphicon-user"></i> Admin<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li role="presentation">
+                                <a href="/logout"> <span class="glyphicon glyphicon-log-out"></span> Log out</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <br>
+        <div class="panel panel-default" id="runOrd">
+            <div class="panel-heading">
+                <h2>Running Orders</h2>
+            </div>
+            <div class="panel-body">
+
+                <div class="table-responsive">
+
+                    <script>
+                        $(document).ready(function() {
+                            $("#tinput").on("keyup", function() {
+                                var value = $(this).val().toLowerCase();
+                                $("#myTable tr").filter(function() {
+                                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                                });
+                            });
+                        });
+                    </script>
+                    <section>
+                        <div class="row" style="margin-left:0; margin-right:0">
+                            <div class="col-md-10">
+                                <input class="form-control" id="tinput" type="text" placeholder="Search..">
+                    </section>
+                    </div>
+                    </div>
+
+                    <table class="table table-striped" style="font-size:95%">
+                        <thead>
+                            <tr>
+                                <th>Order Id</th>
+                                <th>Consumer Id</th>
+                                <th>Consumer Name</th>
+                                <th>Order Date</th>
+                                <th>Order Time</th>
+                                <th>Amount</th>
+                                <th>Order Status</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="myTable">
+                            <%results.forEach((result) => { %>
+
+
+                                <tr>
+                                    <td>
+                                        <%=result.oid%>
+                                    </td>
+                                    <td>
+                                        <%=result.cid%>
+                                    </td>
+                                    <td>
+                                        <%=result.fname +" "+result.lname%>
+                                    </td>
+                                    <td>
+                                        <%=result.date%>
+                                    </td>
+                                    <td>
+                                        <%=result.time%>
+                                    </td>
+                                    <td>
+                                        <%=result.amount%>
+                                    </td>
+                                    <td>
+                                        <select class="form-control" name="status" id="<%=result.oid%>" onChange="return s_up(this.id,this.value);">
+									<%if(result.status == 'Pending'){%>
+										<option value="Pending">Pending</option>
+										<option value="Out for Delivery">Out for Delivery</option>
+									<%}%>
+									<%if(result.status == 'Out for Delivery'){%>							
+										<option value="Out for Delivery">Out for Delivery</option>
+										<option value="Delivered">Delivered</option>									
+									<%}%>	
+                                    </td>
+                                </tr>
+                                <%});%>
+
+                        </tbody>
+                    </table>
+
+                    <script>
+                        function s_up(oid, s_val) {
+                            var flag = confirm("Are you sure, you want to update status of order-id=" + oid);
+
+                            if (flag == 1) {
+                                $.post("/manageorder" + oid,{value:s_val}, (data, status) => {
+                                if (data == "Success")
+                                    window.location.reload();
+                                else if(data == "Empty"){
+                                    alert("Stock is Empty, Order cannot be delivered");
+                                    window.location.reload();
+                                }
+                                else {
+                                    alert("Status Cannot be Updated, Please try again");
+                                    window.location.reload();
+                                }
+                                });
+                            } else {
+                                window.location.reload();
+                            }
+                            return false;
+                        }
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <br>
+        <div class="panel panel-default" id="delOrd">
+            <div class="panel-heading">
+                <h2>Delivered Orders</h2>
+            </div>
+            <div class="panel-body">
+
+                <div class="table-responsive">
+
+                    <script>
+                        $(document).ready(function() {
+                            $("#tinput_c").on("keyup", function() {
+                                var value = $(this).val().toLowerCase();
+                                $("#com_ord tr").filter(function() {
+                                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                                });
+                            });
+                        });
+                    </script>
+
+                    <div class="row" style="margin-left:0;margin-right:0">
+                        <div class="col-md-10">
+                            <input class="form-control" id="tinput_c" type="text" placeholder="Search..">
+                        </div>
+                    </div>
+
+                    <table class="table table-striped" style="font-size:95%">
+                        <thead>
+                            <tr>
+                                <th>Order Id</th>
+                                <th>Consumer Id</th>
+                                <th>Consumer Name</th>
+                                <th>Order Date</th>
+                                <th>Order Time</th>
+                                <th>Amount</th>
+                                <th>Order Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="com_ord">
+                            <%lists.forEach((list)=> {%>                        
+                            <tr>
+                                <td><%=list.oid%></td>
+                                <td><%=list.cid%></td>
+                                <td><%=list.fname +" "+list.lname%></td>
+                                <td><%=list.date%></td>
+                                <td><%=list.time%></td>
+                                <td><%=list.amount%></td>
+                                <td><%=list.status%></td>
+                            </tr>
+                        <%});%>
+                        </tBody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
